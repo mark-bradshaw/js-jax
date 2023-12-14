@@ -1,0 +1,45 @@
+Character:
+
+Use this technique to get consistent characters in midjourney.
+https://www.youtube.com/watch?v=lLo4BB64vUk
+
+
+/imagine prompt:A watercolor painted-cartoon style character-design-sheet of many poses for __________________. Consistent Character from many angles.
+
+/prefer option set:purpo value:https://s.mj.run/12jmSupXd_Y https://s.mj.run/0V16TOpjbAE https://s.mj.run/bNIO1QXxblM https://s.mj.run/I14ctHC7bvc https://s.mj.run/g34tcFLeQAI A photo of an alien creature with soft purple fur, pointed ears, large amber eyes, and a curly tail. He is
+
+------------
+
+https://cdn.discordapp.com/attachments/1083812778382479400/1172371599006105640/anonymous_A_watercolor_painted-cartoon_style_character-design-s_26518e3a-c2fb-492e-a6ff-0428ccfb8b5d.png?ex=65601322&is=654d9e22&hm=fe2b8eabd6df98f24690313a3b450cd75eed95e638bdea1e5b8d813c7842acdf&
+
+A watercolor painted-cartoon style character-design-sheet of many poses for teenage boy with messy hair and glasses wearing a plaid shirt over a tshirt. Consistent Character from many angles.
+Job ID: 26518e3a-c2fb-492e-a6ff-0428ccfb8b5d
+seed 3812591918
+
+-------------
+
+https://cdn.discordapp.com/attachments/1083812778382479400/1172372342375190548/anonymous_A_watercolor_painted-cartoon_style_character-design-s_8d5c3319-9122-4dda-ab95-f3649b3401af.png?ex=656013d4&is=654d9ed4&hm=431a0d654c7012959db60df1a4a593d2a5a2a644bf7a9b6533b3f66b103ffdd9&
+
+A watercolor painted-cartoon style character-design-sheet of many poses for teenage boy with messy hair and glasses wearing a plaid shirt over a tshirt. Consistent Character from many angles.
+Job ID: 8d5c3319-9122-4dda-ab95-f3649b3401af
+seed 856799685
+
+/prefer option set option:sam value:https://cdn.discordapp.com/attachments/1083812778382479400/1172398606003744768/Layer_6.png https://cdn.discordapp.com/attachments/1083812778382479400/1172398606939074600/Layer_3.png  https://cdn.discordapp.com/attachments/1083812778382479400/1172398607308165120/Layer_2.png https://cdn.discordapp.com/attachments/1083812778382479400/1172398607614357534/Layer_1.png https://cdn.discordapp.com/attachments/1083812778382479400/1172398607866007582/Layer.png https://cdn.discordapp.com/attachments/1083812778382479400/1172403496360890378/ffooxxfire_A_watercolor_painted-cartoon_style_portrait_of_a_tee_1abf95ec-102b-428f-a77e-2cbd79c21dc2.png https://media.discordapp.net/attachments/1083812778382479400/1172408299593936906/ffooxxfire_a_teenage_boy_waits_for_a_train_at_the_train_station_4ea05ee7-ab75-49bc-9ecb-f04b18edd5ef.png https://cdn.discordapp.com/attachments/1083812778382479400/1172411162084769833/ffooxxfire_teenage_boy_with_messy_hair_and_glasses_wearing_a_pl_2ec468ed-6f85-4c7e-aee4-d3b6a0bb0b4c.png highly detailed, digital illustration in a realistic comic book style, teenage boy with messy hair and glasses,
+
+
+
+Character drawing. Highly detailed, digital illustration in a realistic comic book style. Vibrant colors. white background. A teenage boy and girl. Side by side. Serene expression.
+Job ID: 47a32665-1d5e-411f-9cab-8454e986ac18
+seed 987913270
+
+Character drawing. Highly detailed, digital illustration in a realistic comic book style. white background. A teenage boy. messy hair, glasses, and is wearing a plaid shirt over a t-shirt. full view. Serene expression. --s 50
+Job ID: e9d997b6-a247-4bb7-a7cc-7b242db437ba
+seed 200562954
+
+Character drawing. Highly detailed, digital illustration in a realistic comic book style. white background. A teenage girl. long hair, pants. full view. Serene expression.
+Job ID: 41116900-42ec-46cc-bf30-4efabc67bab0
+seed 619444216
+
+https://media.discordapp.net/attachments/1083812778382479400/1172335196700409936/anonymous_Character_drawing._Highly_detailed_digital_illustrati_41116900-42ec-46cc-bf30-4efabc67bab0.png https://media.discordapp.net/attachments/1083812778382479400/1172334418212438158/anonymous_Character_drawing._Highly_detailed_digital_illustrati_e9d997b6-a247-4bb7-a7cc-7b242db437ba.png "A group of teenage school kids entering a futuristic high-tech office building with large reflective windows during daytime. At the back of the group, a boy with messy hair, glasses, wearing a plaid shirt over a T-shirt, looking intrigued by his surroundings. Next to him, a girl with long flowing hair and a look of excitement about entering the building. Their faces are turned towards us, partially visible. The sky is dynamic with the subtle hint of an approaching storm, yet the storm is not imminent. The scene is bathed in light with a color palette of blues and purples, conveying a mood of urgency and suspense. The illustration is detailed, realistic yet stylized, akin to a high-quality comic book." --v 5 --q 2 --ar 1:1 --stylize 500 --seed 200562954
+
+https://media.discordapp.net/attachments/1083812778382479400/1172335196700409936/anonymous_Character_drawing._Highly_detailed_digital_illustrati_41116900-42ec-46cc-bf30-4efabc67bab0.png "A group of teenage school kids entering a futuristic high-tech office building with large reflective windows during daytime. At the back of the group, a boy with messy hair, glasses, wearing a plaid shirt over a T-shirt, looking intrigued by his surroundings. Next to him, a girl with long flowing hair and a look of excitement about entering the building. Their faces are turned towards us, partially visible. The sky is dynamic with the subtle hint of an approaching storm, yet the storm is not imminent. The scene is bathed in light with a color palette of blues and purples, conveying a mood of urgency and suspense. The illustration is detailed, realistic yet stylized, akin to a high-quality comic book." --v 5 --q 2 --ar 1:1 --stylize 500 --seed 619444216
