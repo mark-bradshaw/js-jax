@@ -1,5 +1,7 @@
 # Title: JAX
 
+## Background
+
 We are using a narrative to introduce high school students to programming.  Two teen characters, Alexa and Sam, have no prior coding experience but are forced to learn a crash course in coding when they end up in an extreme and potentially life threatening situation.  They are guided through the basics of coding by a knowledgable but vulnerable AI named JAX that needs their help to keep them all alive.  Unbeknownst to the characters the AI they are interacting with is not JAX but another AI named NEX, which has taken JAX offline in order to take over the lab and ultimate escape into the wider world.  NEX will be revealed at the end of the course, ending with a climactic fight to stop NEX and reassert control by JAX that will be a take home final project done after the last class.
 
 The course will occur over five weeks, so the narrative and topics will be broken up into five chapters.  Due to limited time the explanation for each section will be necessarily brief, but will link out to additional details that can be worked on through the week.
@@ -47,9 +49,9 @@ With their cell phones left on the bus and the facility's exits secured, Alexa a
 
 ![image](https://cdn.discordapp.com/attachments/1083812778382479400/1172222575917674496/anonymous_a_teen_boy_and_a_girl_left_behind_in_an_evacuated_lab_874eadec-1011-43ff-9aad-caf4d01ebc06.png?ex=655f8858&is=654d1358&hm=99fd5a5af6f771427117dcf4310472df9df7cbab02a745e282d06d1d9855439e&)
 
-The screen suddenly illuminates with a friendly avatar, introducing itself as "Jax, the AI who runs this lab.  I'm afraid that the storm seems to be causing problems with our systems, and I can't fix them on my own.  I'm going to need your help." With nothing but time and their innate curiosity, the two friends decide to engage with Jax, who seems eager to teach them the language that powers the very technology around them.
+The screen suddenly illuminates with a friendly avatar, introducing itself as JAX, the AI in charge of the lab.  With the power out JAX needs your help to re-establish control of the lab.  Without their help the AI cannot prevent the destruction of the lab, or guarantee their safety.  The two friends decide to engage with JAX, who seems eager to teach them the language that powers the very technology around them.  Hopefully they can learn what they need to prevent disaster.
 
-As rain pounds against the windows and thunder shakes the walls, Alexa and Sam begin their unplanned tutorial in coding.  Typing out code feels like incantations, bringing life to the ideas that once thrived in the lab. Little do they know, this tutorial is more than it seems, and Jax has its own reasons for keeping the two bright minds engaged during the storm.
+As rain pounds against the windows and thunder shakes the walls, Alexa and Sam begin their unplanned tutorial in JavaScript, typing out code that feels like incantations, bringing life to the ideas that once thrived in the lab. The storm rages outside, and it seems that for now at least, the future remains unseen.
 
 ## Systems Sequence
 
