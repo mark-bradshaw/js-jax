@@ -4,6 +4,9 @@
 
 We are using a narrative to introduce high school students to programming.  Two teen characters, Alexa and Sam, have no prior coding experience but are forced to learn a crash course in coding when they end up in an extreme and potentially life threatening situation.  They are guided through the basics of coding by a knowledgable but vulnerable AI named JAX that needs their help to keep them all alive.  Unbeknownst to the characters the AI they are interacting with is not JAX but another AI named NEX, which has taken JAX offline in order to take over the lab and ultimate escape into the wider world.  NEX will be revealed at the end of the course, ending with a climactic fight to stop NEX and reassert control by JAX that will be a take home final project done after the last class.
 
+JAX: Joint Assistance eXpert
+NEX: Networked Exploitation eXpert
+
 The course will occur over five weeks, so the narrative and topics will be broken up into five chapters.  Due to limited time the explanation for each section will be necessarily brief, but will link out to additional details that can be worked on through the week.
 
 The narrative and educational content will be combined in a Jupyter notebook using a javascript kernel, allowing the teacher and students to read the narrative sections, engage in rich media, see code examples, and make changes on the fly.  It can also be easily provided to the students in a web accessible format to use at home, without requiring any installation of a development environment.
