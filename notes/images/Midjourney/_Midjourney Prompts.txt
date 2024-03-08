@@ -8,6 +8,8 @@ https://www.youtube.com/watch?v=lLo4BB64vUk
 
 /prefer option set:purpo value:https://s.mj.run/12jmSupXd_Y https://s.mj.run/0V16TOpjbAE https://s.mj.run/bNIO1QXxblM https://s.mj.run/I14ctHC7bvc https://s.mj.run/g34tcFLeQAI A photo of an alien creature with soft purple fur, pointed ears, large amber eyes, and a curly tail. He is
 
+/imagine --purpo ......
+
 ------------
 
 https://cdn.discordapp.com/attachments/1083812778382479400/1172371599006105640/anonymous_A_watercolor_painted-cartoon_style_character-design-s_26518e3a-c2fb-492e-a6ff-0428ccfb8b5d.png?ex=65601322&is=654d9e22&hm=fe2b8eabd6df98f24690313a3b450cd75eed95e638bdea1e5b8d813c7842acdf&
