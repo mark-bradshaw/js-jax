@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Capture the Flag Challenge</title>
+</head>
+
+<body>
+    <h1>Capture the Flag Coding Challenge</h1>
+    <p>Enter your function in the box below and click 'Run Code' to test it.</p>
+
+    <textarea id="codeInput" style="width:600px;height:120px;">
+function testFunction() {
+    console.log("Replace this function with your solution.");
+}
+    </textarea><br>
+    <button onclick="runUserCode()">Run Code</button>
+
+    <h2>Console Output</h2>
+    <div id="consoleOutput"
+        style="white-space: pre-wrap; background-color: #eee; padding: 10px; border: 1px solid #000; min-height: 100px; width: 600px;">
+    </div>
+
+    <script>
+        function runUserCode() {
+            const userCode = document.getElementById('codeInput').value;
+
+            // Override console.log
+            const oldLog = console.log;
+            const oldError = console.error;
+            let logOutput = '';
+            console.log = function (message) {
+                logOutput += message + '\n';
+                oldLog.apply(console, arguments);
+            };
+            console.error = function (message) {
+                logOutput += 'Error: ' + message + '\n';
+                oldError.apply(console, arguments);
+            };
+
+            try {
+                // Evaluate user code
+                eval(userCode);
+                // Optionally you can call a specific function here
+                // e.g., testFunction();
+            } catch (e) {
+                console.error('Execution error: ' + e.message);
+            }
+
+            // Restore original console functions
+            console.log = oldLog;
+            console.error = oldError;
+
+            // Display output in the page
+            document.getElementById('consoleOutput').textContent = logOutput;
+        }
+    </script>
+</body>
+
+</html>
