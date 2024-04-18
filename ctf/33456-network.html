@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recapture NEX: Stage 1</title>
+
+    <style>
+        body {
+            background-color: #c8c7c7;
+            /* Darker background for better contrast */
+            color: #1e211b;
+            /* Soft neon green for better readability */
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 16px;
+            padding: 20px;
+        }
+
+        h1,
+        p {
+            color: #1e211b;
+        }
+
+        textarea {
+            color: #1e211b;
+            /* Soft neon green text */
+            border: 1px solid #00ff00;
+            /* Brighter green for the border */
+            padding: 10px;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            width: 90%;
+            height: 400px;
+            box-sizing: border-box;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        button {
+            background-color: #007700;
+            /* Dark green background */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #005500;
+            /* Even darker green on hover */
+        }
+
+        code {
+            font-weight: bold;
+        }
+
+        #consoleOutput {
+            background-color: #adadad;
+            /* Same deep black for consistency */
+            color: #1e211b;
+            /* Text in soft neon green for readability */
+            border: 1px solid #00ff00;
+            /* Bright green border */
+            padding: 10px;
+            white-space: pre-wrap;
+            width: 600px;
+            min-height: 100px;
+            margin-top: 10px;
+        }
+
+        #flag {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Recapture NEX: Stage 1</h1>
+
+    <div id="capture">
+        <p>NEX is working to upload itself out of the lab. We need to stop that or the global consequences could be
+            drastic.
+            To start we'll need to get access back to the internal network, but NEX has changed the access codes. We'll
+            need
+            to crack it. One way to do that is to brute force the password. That's where you try all the password
+            combinations until you find the right one.</p>
+
+        <p>Write a function named bruteForcePassword that attempts to crack a numeric password using a brute force
+            approach.
+            The password is a fixed-length numeric string (e.g., "0423").
+
+            Specifications:
+
+            The function receives two arguments: checkPassword, a function that takes a guessed password and returns
+            true if
+            the guess is correct and false otherwise, and passwordLength, the exact length of the password.
+            The password consists only of numeric characters (0-9).
+            The function should return the correct password as a string.</p>
+
+        <p>Enter your function in the box below and click 'Run Code' to test it.</p>
+
+        <code>function bruteForcePassword(checkPassword, passwordLength) {</code><br>
+        <textarea id="codeInput">
+// You have been passed two parameters:
+// * checkPassword - Call this with a guessed password to check if it's correct
+// * passwordLength - the size of the password
+
+// You need to try all combinations of numbers from 0-9 with the length of passwordLength.
+// For each guess, call "checkPassword(guess)".  If it returns true, you found the password, and should
+// return that guess.  Otherwise, keep trying combinations until you find it or run out of tries.
+
+// NOTE, the password is made up of numbers, but IT IS A STRING.  That means it might start with a
+// zero.  Make sure that you make your guess into a string, not a number, or a leading zero
+// will be removed.
+    </textarea><br>
+        <code>}</code><br>
+        <button onclick="runUserCode()">Run Code</button>
+
+        <h2>Console Output</h2>
+        <div id="consoleOutput"
+            style="white-space: pre-wrap; background-color: #eee; padding: 10px; border: 1px solid #000; min-height: 100px; width: 600px;">
+        </div>
+    </div>
+
+    <div id="flag">
+        <p>You found the password! Now that we have access to the network again, let's see if we can get door control
+            too so that you can get to the controls for external comms.</p>
+
+        <p>For the next stage, go to: <a
+                href="https://mark-bradshaw.github.io/js-jax/ctf/33456-network.html">https://mark-bradshaw.github.io/js-jax/ctf/33456-network.html</a>
+        </p>
+    </div>
+
+    <script>
+        const storageName = 'userCode1';
+        const passwordAnswerToFind = generateRandomPassword();
+
+        if (window.sessionStorage.getItem(storageName) !== null) {
+            document.getElementById('codeInput').value = window.sessionStorage.getItem(storageName);
+        }
+
+        function runUserCode() {
+            const userCode = document.getElementById('codeInput').value;
+            window.sessionStorage.setItem(storageName, userCode);
+
+            // Override console.log
+            const oldLog = console.log;
+            const oldError = console.error;
+            let logOutput = '';
+            console.log = function (message) {
+                logOutput += message + '\n';
+                oldLog.apply(console, arguments);
+            };
+            console.error = function (message) {
+                logOutput += 'Error: ' + message + '\n';
+                oldError.apply(console, arguments);
+            };
+
+            if (userCode.indexOf('function') !== -1) {
+                console.error('The shell of the function is already provided.  Just type out the content.');
+            } else {
+                try {
+
+                    let guess;
+                    // Evaluate user code
+                    eval('function runIt(checkPassword, passwordLength) {' + userCode + ';} guess = runIt(checkPassword, passwordAnswerToFind.length);');
+
+
+                    if (checkPassword(guess)) {
+                        alert('Found it.  The password was ' + guess);
+                        document.getElementById('capture').style.display = 'none';
+                        document.getElementById('flag').style.display = 'block';
+                    }
+                } catch (e) {
+                    console.error('Execution error: ' + e.message);
+                }
+            }
+
+            // Restore original console functions
+            console.log = oldLog;
+            console.error = oldError;
+
+            // Display output in the page
+            document.getElementById('consoleOutput').textContent = logOutput;
+        }
+
+        function generateRandomPassword() {
+            const length = 7;
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                const randomDigit = Math.floor(Math.random() * 10); // Generates a random digit from 0 to 9
+                password += randomDigit.toString();
+            }
+            return password;
+        }
+
+        function checkPassword(guess) {
+            return guess == passwordAnswerToFind;
+        }
+    </script>
+</body>
+
+</html>
