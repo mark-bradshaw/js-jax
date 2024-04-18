@@ -10,11 +10,14 @@
     <h1>Capture the Flag Coding Challenge</h1>
     <p>Enter your function in the box below and click 'Run Code' to test it.</p>
 
+    <code>function solveIt() {</code><br>
     <textarea id="codeInput" style="width:600px;height:120px;">
-function testFunction() {
-    console.log("Replace this function with your solution.");
-}
+    console.log("Put your code here.");
+
+    // Don't forget to return a value.
+    return false;
     </textarea><br>
+    <code>}</code><br>
     <button onclick="runUserCode()">Run Code</button>
 
     <h2>Console Output</h2>
@@ -23,8 +26,13 @@ function testFunction() {
     </div>
 
     <script>
+        if (window.sessionStorage.getItem('userCode') !== null) {
+            document.getElementById('codeInput').value = window.sessionStorage.getItem('userCode');
+        }
+
         function runUserCode() {
             const userCode = document.getElementById('codeInput').value;
+            window.sessionStorage.setItem('userCode', userCode);
 
             // Override console.log
             const oldLog = console.log;
@@ -39,13 +47,17 @@ function testFunction() {
                 oldError.apply(console, arguments);
             };
 
-            try {
-                // Evaluate user code
-                eval(userCode);
-                // Optionally you can call a specific function here
-                // e.g., testFunction();
-            } catch (e) {
-                console.error('Execution error: ' + e.message);
+            if (userCode.indexOf('function') !== -1) {
+                console.error('Don\'t define additional functions, just return a value from solveIt().');
+            } else {
+                try {
+                    // Evaluate user code
+                    eval('function runIt(params) {' + userCode + ';} runIt("hi")');
+                    // Optionally you can call a specific function here
+                    // e.g., testFunction();
+                } catch (e) {
+                    console.error('Execution error: ' + e.message);
+                }
             }
 
             // Restore original console functions
