@@ -106,10 +106,6 @@
 
         <code>function bruteForcePassword(checkPassword, passwordLength) {</code><br>
         <textarea id="codeInput">
-// You have been passed two parameters:
-// * checkPassword - Call this with a guessed password to check if it's correct
-// * passwordLength - the size of the password
-
 // You need to try all combinations of numbers from 0-9 with the length of passwordLength.
 // For each guess, call "checkPassword(guess)".  If it returns true, you found the password, and should
 // return that guess.  Otherwise, keep trying combinations until you find it or run out of tries.
@@ -152,11 +148,15 @@
             const oldLog = console.log;
             const oldError = console.error;
             let logOutput = '';
-            console.log = function (message) {
+            console.log = function () {
+                var args = Array.prototype.slice.call(arguments);
+                var message = args.join(' ');
                 logOutput += message + '\n';
-                oldLog.apply(console, arguments);
+                oldLog.apply(console, args);
             };
-            console.error = function (message) {
+            console.error = function () {
+                var args = Array.prototype.slice.call(arguments);
+                var message = args.join(' ');
                 logOutput += 'Error: ' + message + '\n';
                 oldError.apply(console, arguments);
             };
