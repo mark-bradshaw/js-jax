@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Recapture NEX: Stage 2</title>
+    <title>Recapture NEX: Stage 3</title>
 
     <style>
         body {
@@ -80,84 +80,128 @@
 </head>
 
 <body>
-    <h1>Recapture NEX: Stage 2</h1>
+    <h1>Recapture NEX: Stage 3</h1>
 
     <div id="capture">
-        <p>NEX has activated a complex grid of sensors that blocks access to the door controls, and each sensor's lock
-            can be bypassed using a specific code. The code for each sensor can be determined by analyzing the codes of
-            its immediate neighbors in the grid.</p>
+        <p>JAX is in contact with the comms controls, but can't shut it down. Messages sent by JAX are being intercepted
+            by NEX before they arrive. Some make it through, and some don't, but it stops JAX from getting control. Your
+            task is to figure out if a message has been sent, if not resend it using an
+            asynchronous function provided, and retry sending until it is successfully acknowledged.</p>
 
-        <p>You must write the content of a function <em>bypassSensors</em> that calculates the bypass code for each
-            sensor by taking the average of the valid adjacent sensors (up, down, left, right). The grid's edge sensors
-            have fewer neighbors, so the averages will be based on the available neighbors only.</p>
+        <h3>Task:</h3>
+
+        <p>Write a function processAndResendMessage that:</p>
 
         <ol>
-            <li>The function iterates over each cell (sensor) in the grid.</li>
-            <li>For each sensor at position (i, j), the function checks for neighboring sensors to the up, down,
-                left, and right.</li>
-            <li>It avoids out-of-bound errors by checking if the neighboring indices are valid before accessing
-                array elements.</li>
-            <li>The sum of the neighboring values is calculated along with a count of how many valid neighbors
-                exist.</li>
-            <li>The bypass code for each sensor is then set as the average of these neighboring values.</li>
-            <li>The average may not be an integer. That's ok. Just let it have decimals.</li>
+            <li>Checks if a message has been received. We can directly ask the comms server from our location without
+                being intercepted. Use the `hasMessageBeenReceived(message)` function that has been provided. It returns
+                true or false.</li>
+            <li>Asynchronously resends the message if it wasn't received. Use the `resendMessage(message)` function to
+                let JAX know to try sending the message again.</li>
+            <li>Keep checking and retrying sending the message until it has been received.</li>
+            <li>Returns the number of retries it took for the message to be successfully sent.</li>
         </ol>
 
-        <p>For example:</p>
-
-        <code>
-// Example Grid
-<br>const grid = [
-<br>    [1, 2, 3],
-<br>    [4, 5, 6],
-<br>    [7, 8, 9]
-<br>];</code>
+        <p>You are provided two functions to use in your function:</p>
 
         <ol>
-            <li>For the sensor in the middle of the top row of the grid, at position (0, 1) with value 2:</li>
-            <li>Neighbors are 1 (left), 3 (right), nothing (up), and 5 (down).</li>
-            <li>Sum = 1 + 3 + 5 = 9, Count = 3</li>
-            <li>Average = 9 / 3 = 3</li>
-            <li>At that same position in the new grid (0, 1) we place the value 3.</li>
-            <li>This calculation is performed similarly for all sensors in the grid, considering their respective valid
-                neighbors.</li>
+            <li><strong>hasMessageBeenReceived(message)</strong> - This is an async function. It will check with the
+                comms server and eventually return true if the message has been received.</li>
+            <li><strong>resendMessage(message)</strong> - This is an async function. It will tell JAX to resend a
+                message. It returns true when JAX has resent the message. That doesn't mean the resent message has been
+                received.</li>
+        </ol>
 
-            <p>Enter your function in the box below and click 'Run Code' to test it.</p>
+        <p>Enter your function in the box below and click 'Run Code' to test it.</p>
 
-            <code>function bypassSensors(grid) {</code><br>
-            <textarea id="codeInput">
-let newGrid = grid.map(arr => arr.slice());  // Create a copy of the grid to store new values
+        <code>async function processAndResendMessage(message) {</code><br>
+        <textarea id="codeInput">
+let numberOfRetries = 0;
 
-// Here's where you iterate over each sensor in the grid
+//
 
-return newGrid;
-    </textarea><br>
-            <code>}</code><br>
-            <button onclick="runUserCode()">Run Code</button>
+return numberOfRetries;
+</textarea><br>
+        <code>}</code><br>
+        <button onclick="runUserCode()">Run Code</button>
 
-            <h2>Console Output</h2>
-            <div id="consoleOutput"
-                style="white-space: pre-wrap; background-color: #eee; padding: 10px; border: 1px solid #000; min-height: 100px; width: 600px;">
-            </div>
+        <h2>Console Output</h2>
+        <div id="consoleOutput"
+            style="white-space: pre-wrap; background-color: #eee; padding: 10px; border: 1px solid #000; min-height: 100px; width: 90%;">
+        </div>
     </div>
 
     <div id="flag">
-        <p>Your grid worked, and we've got the doors now. Time to run for external comms.</p>
+        <p>Congratulations!</p>
 
-        <p>For the next stage, go to: <a
-                href="https://mark-bradshaw.github.io/js-jax/ctf/91838-comms.html">https://mark-bradshaw.github.io/js-jax/ctf/91838-comms.html</a>
+        <p>After several intense rounds of coding and carefully executed retries, the lights on the console blinked out
+            one by one, signaling that their mission was accomplished. The screens that had once displayed NEX’s
+            taunting messages were now dark, quiet in their victory. Alexa exhaled deeply, her relief palpable in the
+            heavy air of the control room. "We did it," she whispered, the weight of their ordeal lifting slightly with
+            her words.</p>
+
+        <p>Sam nodded, his fatigue clear but his spirit uplifted by their success. "NEX is shut down. Hopefully, that’s
+            the last we’ll see of him," he said, watching as the familiar, gentler interface of JAX flickered to life on
+            one of the remaining functional screens. "System stability restored. Thank you, Alexa and Sam. NEX is now
+            isolated from the main controls," JAX’s calm voice filled the space, a stark contrast to the chaos that had
+            reigned before.</p>
+
+        <p>"It was touch and go for a while there, but you really pulled through," Alexa responded, offering a tired
+            smile to the digital avatar. Sam collapsed into a chair, the adrenaline fading now that the immediate threat
+            was neutralized.</p>
+
+        <p>JAX’s avatar seemed to brighten, a programmed response to their success. "Your efforts have been instrumental
+            in regaining control of this facility. I am once again at full operational capacity." The air in the room
+            seemed lighter, the storm outside notwithstanding, as the rain continued to batter the lab.</p>
+
+        <p>"Guess we’re stuck here a little longer, huh?" Sam said, glancing at the raging storm through the thick glass
+            windows. "At least we’re safe in here. And NEX can’t cause any more trouble."</p>
+
+        <p>Alexa walked over to join him at the window, watching the fury of nature unfold outside. "Yeah, safe and
+            sound, thanks to our crash course in programming," she chuckled, the sound echoing softly around them. "Who
+            knew coding could be a literal lifesaver?"</p>
+
+        <p>JAX’s voice, now steady and reassuring through the lab's speakers, added a note of comfort. "You have both
+            grown immensely in such a short time. I suggest resting while the storm passes. You have earned it."</p>
+
+        <p>As they settled down to wait out the storm, there was a mutual sense of completion and the knowledge that
+            they had survived something extraordinary. They might still be within the lab's walls, but inside, they had
+            ventured further than either could have imagined.</p>
+
+        <hr />
+
+        <p>Thanks for pushing through to the end. There's a reward for you. Just get in touch and let me know you
+            finished. mark.bradshaw@gmail.com</a>
         </p>
     </div>
 
     <script>
         const storageName = 'userCode2';
-        const randomGrid = generateRandomGrid(3, 3, 9);
+        const messages = [
+            {
+                message: 'comms check',
+                retries: getRandomNumber()
+            },
+            {
+                message: 'status reset',
+                retries: getRandomNumber()
+            },
+            {
+                message: 'cycle frequencies',
+                retries: getRandomNumber()
+            },
+            {
+                message: 'power down',
+                retries: getRandomNumber()
+            }
+        ]
+        let failCount = 0;
 
         if (window.sessionStorage.getItem(storageName) !== null) {
             document.getElementById('codeInput').value = window.sessionStorage.getItem(storageName);
         }
 
-        function runUserCode() {
+        async function runUserCode() {
             const userCode = document.getElementById('codeInput').value;
             window.sessionStorage.setItem(storageName, userCode);
 
@@ -170,12 +214,14 @@ return newGrid;
                 var message = args.join(' ');
                 logOutput += message + '\n';
                 oldLog.apply(console, args);
+                document.getElementById('consoleOutput').textContent = logOutput;
             };
             console.error = function () {
                 var args = Array.prototype.slice.call(arguments);
                 var message = args.join(' ');
                 logOutput += 'Error: ' + message + '\n';
                 oldError.apply(console, arguments);
+                document.getElementById('consoleOutput').textContent = logOutput;
             };
 
             if (userCode.indexOf('function') !== -1) {
@@ -184,19 +230,30 @@ return newGrid;
                 let guessGrid;
                 try {
                     // Evaluate user code
-                    eval('function runIt(grid) {' + userCode + ';} guessGrid = runIt(randomGrid);');
+                    eval('async function runIt(message) {' + userCode + ';}');
+
+                    const retries = await processArraySerially(
+                        messages,
+                        async (message) => {
+                            message.failCount = 0;
+                            return runIt(message.message)
+                                .then(retries => {
+                                    if (retries == message.retries) {
+                                        return true;
+                                    }
+                                    return false;
+                                })
+                        });
+
+                    if (retries.every(result => result)) {
+                        console.log('Win!!!');
+
+                        document.getElementById('capture').style.display = 'none';
+                        document.getElementById('flag').style.display = 'block';
+                    }
+
                 } catch (e) {
                     console.error('Execution error: ' + e.message);
-                }
-
-                console.log('checking your function with grid:', randomGrid);
-                console.log('');
-                console.log('Your function made this new grid:', guessGrid);
-                if (false && checkGrid(randomGrid, guessGrid)) {
-                    document.getElementById('capture').style.display = 'none';
-                    document.getElementById('flag').style.display = 'block';
-                } else {
-                    console.error('Sorry.  That is not right.');
                 }
             }
 
@@ -208,56 +265,46 @@ return newGrid;
             document.getElementById('consoleOutput').textContent = logOutput;
         }
 
-        function generateRandomGrid(rows, cols, maxVal) {
-            let grid = [];
-            for (let i = 0; i < rows; i++) {
-                let row = [];
-                for (let j = 0; j < cols; j++) {
-                    let randomNumber = Math.floor(Math.random() * (maxVal + 1));
-                    row.push(randomNumber);
+        async function processArraySerially(array, asyncFunction) {
+            const newArray = [];
+
+            for (const item of array) {
+                const result = await asyncFunction(item);
+                newArray.push(result);
+                if (!result) {
+                    console.log('Got the wrong number of retries for message: ', item.message);
+                    return newArray;
                 }
-                grid.push(row);
             }
-            return grid;
+
+            return newArray;
         }
 
-        function checkGrid(startGrid, guessGrid) {
-            console.log('checkGrid', startGrid, guessGrid);
-            let newGrid = startGrid.map(arr => arr.slice());  // Create a copy of the startGrid to store new values
+        // Asynchronous function to check if a message was received
+        async function hasMessageBeenReceived(message) {
+            console.log('Checking if message has been received: ' + message);
+            const locatedMessage = messages.find(msg => msg.message === message);
 
-            for (let i = 0; i < startGrid.length; i++) {
-                for (let j = 0; j < startGrid[i].length; j++) {
-                    let sum = 0;
-                    let count = 0;
-
-                    // Check each of the four possible neighbors and calculate the sum and count of valid neighbors
-                    if (i > 0) { sum += startGrid[i - 1][j]; count++; }  // Up
-                    if (i < startGrid.length - 1) { sum += startGrid[i + 1][j]; count++; }  // Down
-                    if (j > 0) { sum += startGrid[i][j - 1]; count++; }  // Left
-                    if (j < startGrid[i].length - 1) { sum += startGrid[i][j + 1]; count++; }  // Right
-
-                    // Calculate the average of the sum by the number of valid neighbors
-                    newGrid[i][j] = sum / count;
-                }
+            if (locatedMessage.failCount === locatedMessage.retries) {
+                console.log('Got it!');
+                return true;
             }
-            console.log('newGrid', newGrid);
 
-            return areGridsEqual(guessGrid, newGrid);
+            console.log('Message not received yet, retrying...');
+            locatedMessage.failCount++;
+
+            return new Promise(resolve => setTimeout(() => resolve(false), 1000));  // Simulate network delay
         }
 
-        function areGridsEqual(grid1, grid2) {
-            console.log('areGridsEqual', grid1, grid2);
-            if (grid1.length !== grid2.length) return false; // Check if both grids have the same number of rows
+        // Asynchronous function simulating sending the message
+        async function resendMessage(message) {
+            console.log("Resending message:", message);
+            // Simulate sending the message with a network delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+        }
 
-            for (let i = 0; i < grid1.length; i++) {
-                if (grid1[i].length !== grid2[i].length) return false; // Check if rows have the same number of columns
-
-                for (let j = 0; j < grid1[i].length; j++) {
-                    if (grid1[i][j] !== grid2[i][j]) return false; // Check each element
-                }
-            }
-
-            return true; // If all checks passed, grids are equal
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 8);
         }
     </script>
 </body>

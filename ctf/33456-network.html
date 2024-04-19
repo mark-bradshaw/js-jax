@@ -131,15 +131,16 @@ let newGrid = grid.map(arr => arr.slice());  // Create a copy of the grid to sto
 // Here's where you iterate over each sensor in the grid
 
 return newGrid;
-    </textarea><br>
+</textarea><br>
             <code>}</code><br>
             <button onclick="runUserCode()">Run Code</button>
-
-            <h2>Console Output</h2>
-            <div id="consoleOutput"
-                style="white-space: pre-wrap; background-color: #eee; padding: 10px; border: 1px solid #000; min-height: 100px; width: 600px;">
-            </div>
     </div>
+
+    <h2>Console Output</h2>
+    <div id="consoleOutput"
+        style="white-space: pre-wrap; background-color: #eee; padding: 10px; border: 1px solid #000; min-height: 100px; width: 90%;">
+    </div>
+
 
     <div id="flag">
         <p>Your grid worked, and we've got the doors now. Time to run for external comms.</p>
@@ -181,23 +182,36 @@ return newGrid;
             if (userCode.indexOf('function') !== -1) {
                 console.error('The shell of the function is already provided.  Just type out the content.');
             } else {
-                let guessGrid;
                 try {
                     // Evaluate user code
-                    eval('function runIt(grid) {' + userCode + ';} guessGrid = runIt(randomGrid);');
+                    eval('function runIt(grid) {' + userCode + ';}');
+
+                    const guessGrid = runIt(randomGrid);
+
+                    console.log('checking your function with grid:');
+                    console.log(randomGrid[0]);
+                    console.log(randomGrid[1]);
+                    console.log(randomGrid[2]);
+                    console.log('');
+
+                    console.log('Your function made this new grid:');
+                    console.log(guessGrid[0]);
+                    console.log(guessGrid[1]);
+                    console.log(guessGrid[2]);
+
+                    if (checkGrid(randomGrid, guessGrid)) {
+                        console.log('Equal!');
+
+                        document.getElementById('capture').style.display = 'none';
+                        document.getElementById('flag').style.display = 'block';
+                    } else {
+                        console.error('Sorry.  That is not right.');
+                    }
                 } catch (e) {
                     console.error('Execution error: ' + e.message);
                 }
 
-                console.log('checking your function with grid:', randomGrid);
-                console.log('');
-                console.log('Your function made this new grid:', guessGrid);
-                if (false && checkGrid(randomGrid, guessGrid)) {
-                    document.getElementById('capture').style.display = 'none';
-                    document.getElementById('flag').style.display = 'block';
-                } else {
-                    console.error('Sorry.  That is not right.');
-                }
+
             }
 
             // Restore original console functions
@@ -222,7 +236,6 @@ return newGrid;
         }
 
         function checkGrid(startGrid, guessGrid) {
-            console.log('checkGrid', startGrid, guessGrid);
             let newGrid = startGrid.map(arr => arr.slice());  // Create a copy of the startGrid to store new values
 
             for (let i = 0; i < startGrid.length; i++) {
@@ -240,13 +253,16 @@ return newGrid;
                     newGrid[i][j] = sum / count;
                 }
             }
-            console.log('newGrid', newGrid);
+            console.log('');
+            console.log('correct grid:');
+            console.log(newGrid[0]);
+            console.log(newGrid[1]);
+            console.log(newGrid[2]);
 
             return areGridsEqual(guessGrid, newGrid);
         }
 
         function areGridsEqual(grid1, grid2) {
-            console.log('areGridsEqual', grid1, grid2);
             if (grid1.length !== grid2.length) return false; // Check if both grids have the same number of rows
 
             for (let i = 0; i < grid1.length; i++) {

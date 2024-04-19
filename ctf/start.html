@@ -113,13 +113,13 @@
 // NOTE, the password is made up of numbers, but IT IS A STRING.  That means it might start with a
 // zero.  Make sure that you make your guess into a string, not a number, or a leading zero
 // will be removed.
-    </textarea><br>
+</textarea><br>
         <code>}</code><br>
         <button onclick="runUserCode()">Run Code</button>
 
         <h2>Console Output</h2>
         <div id="consoleOutput"
-            style="white-space: pre-wrap; background-color: #eee; padding: 10px; border: 1px solid #000; min-height: 100px; width: 600px;">
+            style="white-space: pre-wrap; background-color: #eee; padding: 10px; border: 1px solid #000; min-height: 100px; width: 90%;">
         </div>
     </div>
 
@@ -165,11 +165,10 @@
                 console.error('The shell of the function is already provided.  Just type out the content.');
             } else {
                 try {
-
-                    let guess;
                     // Evaluate user code
-                    eval('function runIt(checkPassword, passwordLength) {' + userCode + ';} guess = runIt(checkPassword, passwordAnswerToFind.length);');
+                    eval('function runIt(checkPassword, passwordLength) {' + userCode + ';}');
 
+                    const guess = runIt(checkPassword, passwordAnswerToFind.length);
 
                     if (checkPassword(guess)) {
                         alert('Found it.  The password was ' + guess);
